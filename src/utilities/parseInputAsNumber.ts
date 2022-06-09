@@ -1,4 +1,4 @@
-import { FormObject } from '../components/Form/Form'
+import { FormObject } from '../interfaces/interfaces'
 
 const parseInputAsNumber = (formObj: FormObject) => {
   let parsedObject = { ...formObj }

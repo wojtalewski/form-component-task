@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Form, Field } from 'react-final-form'
 import { OnChange } from 'react-final-form-listeners'
-import formatString from 'format-string-by-pattern'
 
 import Condition from '../Condition/Condition'
 
@@ -11,15 +10,13 @@ import backgroundSoup from '../../assets/img/soup.webp'
 import backgroundSandwich from '../../assets/img/sandwich.webp'
 
 import parseInputAsNumber from '../../utilities/parseInputAsNumber'
+import {
+  formatOnlyNumbersFloat,
+  formatOnlyNumbersInt,
+  formatOnlyNumbersPreparationTime,
+} from '../../utilities/formatString'
 
-export interface FormObject {
-  name: string
-  type: string
-  no_of_slices: number
-  diameter: number
-  spiciness_scale: number
-  slices_of_bread: number
-}
+import { FormObject } from '../../interfaces/interfaces'
 
 interface Props {
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
@@ -39,6 +36,18 @@ const FormComponent: React.FC<Props> = ({ setLoading }) => {
   }
 
   const required = (value: string) => (value ? undefined : 'Required')
+  const minMaxValue = (min: number, max: number) => (value: number) =>
+    isNaN(value) || (value >= min && value <= max)
+      ? undefined
+      : `Should be a number between ${min} - ${max}`
+
+  const composeValidators =
+    (...validators: Function[]) =>
+    (value: string) =>
+      validators.reduce(
+        (error, validator) => error || validator(value),
+        undefined
+      )
 
   return (
     <div className='form__section' style={styles}>
@@ -89,7 +98,11 @@ const FormComponent: React.FC<Props> = ({ setLoading }) => {
               </OnChange>
 
               <Condition when='type' is='pizza'>
-                <Field name='no_of_slices' validate={required}>
+                <Field
+                  name='no_of_slices'
+                  validate={required}
+                  parse={formatOnlyNumbersInt}
+                >
                   {({ input, meta }) => {
                     return (
                       <div>
@@ -98,7 +111,7 @@ const FormComponent: React.FC<Props> = ({ setLoading }) => {
                           {...input}
                           type='number'
                           min='1'
-                          placeholder='0'
+                          placeholder='1'
                         />
                         {meta.error && meta.touched && (
                           <span>{meta.error}</span>
@@ -109,7 +122,11 @@ const FormComponent: React.FC<Props> = ({ setLoading }) => {
                 </Field>
               </Condition>
               <Condition when='type' is='pizza'>
-                <Field name='diameter' validate={required}>
+                <Field
+                  name='diameter'
+                  validate={required}
+                  parse={formatOnlyNumbersFloat}
+                >
                   {({ input, meta }) => {
                     return (
                       <div>
@@ -117,9 +134,8 @@ const FormComponent: React.FC<Props> = ({ setLoading }) => {
                         <input
                           {...input}
                           type='number'
-                          min='0'
                           step='0.1'
-                          placeholder='0'
+                          placeholder='1'
                         />
                         {meta.error && meta.touched && (
                           <span>{meta.error}</span>
@@ -130,7 +146,11 @@ const FormComponent: React.FC<Props> = ({ setLoading }) => {
                 </Field>
               </Condition>
               <Condition when='type' is='soup'>
-                <Field name='spiciness_scale' validate={required}>
+                <Field
+                  name='spiciness_scale'
+                  validate={composeValidators(required, minMaxValue(1, 10))}
+                  parse={formatOnlyNumbersInt}
+                >
                   {({ input, meta }) => {
                     return (
                       <div>
@@ -140,7 +160,7 @@ const FormComponent: React.FC<Props> = ({ setLoading }) => {
                           type='number'
                           min='1'
                           max='10'
-                          placeholder='0'
+                          placeholder='1'
                         />
                         {meta.error && meta.touched && (
                           <span>{meta.error}</span>
@@ -151,7 +171,11 @@ const FormComponent: React.FC<Props> = ({ setLoading }) => {
                 </Field>
               </Condition>
               <Condition when='type' is='sandwich'>
-                <Field name='slices_of_bread' validate={required}>
+                <Field
+                  name='slices_of_bread'
+                  validate={required}
+                  parse={formatOnlyNumbersInt}
+                >
                   {({ input, meta }) => {
                     return (
                       <div>
@@ -168,18 +192,14 @@ const FormComponent: React.FC<Props> = ({ setLoading }) => {
 
               <Field
                 name='preparation_time'
-                parse={formatString('99:99:99')}
+                parse={formatOnlyNumbersPreparationTime}
                 validate={required}
               >
                 {({ input, meta }) => {
                   return (
                     <div>
                       <label>Preparation Time</label>
-                      <input
-                        {...input}
-                        type='text'
-                        placeholder='Preparation Time'
-                      />
+                      <input {...input} type='text' placeholder='00:00:00' />
                       {meta.error && meta.touched && <span>{meta.error}</span>}
                     </div>
                   )
