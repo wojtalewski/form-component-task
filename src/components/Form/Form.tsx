@@ -149,7 +149,7 @@ const FormComponent = () => {
                             {...input}
                             type='number'
                             step='0.1'
-                            placeholder='1=100'
+                            placeholder='1-100'
                             min='1'
                             max='100'
                             id='diameter'
