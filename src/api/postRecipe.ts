@@ -7,7 +7,7 @@ const URL = 'https://frosty-wood-6558.getsandbox.com:443/dishes'
 const postRecipe = async (formObject: FormObject) => {
   const response = await axios.post(URL, formObject)
 
-  return response.data
+  console.log(response.data)
 }
 
 export default postRecipe

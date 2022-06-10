@@ -20,7 +20,6 @@ const FormComponent = () => {
 
     try {
       postRecipe(newObject)
-
       toast.success('Form sent!')
     } catch (error) {
       toast.error('Something went wrong, try again later')
