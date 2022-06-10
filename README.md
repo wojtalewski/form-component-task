@@ -4,6 +4,8 @@ This is a basic form component for adding recipes to a website.
 
 It was designed and created by Łukasz Wojtalewicz.
 
+The entire task took about two days, mainly due to Final-Form being new library, that I had to learn.
+
 ## Node Version
 
 16.13.1
