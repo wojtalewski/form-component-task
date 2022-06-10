@@ -13,24 +13,14 @@ html {
   box-sizing: border-box;
 
   @include respond(phone) {
-    font-size: 75%;
-  }
-
-  @include respond(small-phone) {
-    font-size: 62.5%;
-  }
-  @include respond(smallest-phone) {
     font-size: 50%;
   }
 }
 
 body {
   min-height: 100vh;
-  background-image: linear-gradient(
-    to right bottom,
-    $main-background,
-    $secondary-background
-  );
+
+  background-image: linear-gradient(to right bottom, #ced4da, #dee2e6);
   font-family: 'Spartan', sans-serif;
   font-weight: 700;
 

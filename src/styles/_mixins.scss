@@ -17,6 +17,11 @@ Breakpoint argument choices:
 // Order : Base + typography > general layout + grid > page layout > components
 
 @mixin respond($breakpoint) {
+  @if $breakpoint == laptop {
+    @media only screen and (max-width: 64em) {
+      @content;
+    }
+  }
   @if $breakpoint == phone {
     @media only screen and (max-width: 26.57em) {
       @content;

@@ -1,34 +1,117 @@
 .form__section {
-  min-width: 120rem;
-
-  border-radius: 9px;
-  overflow: hidden;
-  box-shadow: 0 1.5rem 4rem rgba(black, 0.2);
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background-color: #f8f9fa;
-
   &-container {
-    width: 100%;
-    min-height: 50rem;
-    border-radius: 3px;
-    padding: 2rem;
+    min-width: 120rem;
 
-    background-image: linear-gradient(
-      105deg,
-      rgba(white, 0.8) 0%,
-      rgba(white, 0.8) 50%,
-      transparent 50%
-    );
+    @include respond(laptop) {
+      min-width: 90vw;
+      min-height: 90vh;
+    }
+
+    padding: 3rem;
+    background-color: rgba($color-white, 0.8);
+  }
+
+  &-img {
+    background-image: url('../../assets/img/cuttingBoard.webp');
+    background-size: cover;
+    padding: 3rem;
+    transition: all 0.3s;
+
+    &-cutting-board {
+      background-image: url('../../assets/img/cuttingBoard.webp');
+    }
+    &-pizza {
+      background-image: url('../../assets/img/pizza.webp');
+    }
+    &-soup {
+      background-image: url('../../assets/img/soup.webp');
+    }
+    &-sandwich {
+      background-image: url('../../assets/img/sandwich.webp');
+    }
   }
 
   &-form {
-    width: 50%;
+    max-width: 40%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
+
+    @include respond(laptop) {
+      max-width: 100%;
+    }
   }
+}
+
+.input__container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form__section label {
+  font-size: 1.4rem;
+  color: $main-color;
+}
+
+.form__section input,
+.form__section select {
+  font-size: 1.4rem;
+  display: inline-block;
+  padding: 1rem 0.2rem;
+
+  &::placeholder {
+    color: $color-gray;
+  }
+}
+
+.form__button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+
+  @include respond(phone) {
+    flex-direction: column;
+    margin-top: auto;
+  }
+}
+
+.form__button {
+  cursor: pointer;
+  font-size: 1.4rem;
+  display: block;
+  padding: 1rem;
+  border: none;
+  background-color: $main-color;
+  color: $color-white;
+  width: 100%;
+
+  transition: all 0.3s;
+}
+.form__button:hover {
+  background-color: $color-white;
+  color: $main-color;
+  outline: 3px solid $main-color;
+}
+
+.form__button:disabled {
+  background-color: $color-white;
+  color: $color-gray;
+  outline: 3px solid $color-gray;
+}
+
+.input-error {
+  border: 3px solid $color-red;
+}
+
+.error__message {
+  font-size: 1.4rem;
+  color: $color-red;
 }
