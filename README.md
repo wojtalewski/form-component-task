@@ -4,8 +4,28 @@ This is a basic form component for adding recipes to a website.
 
 It was designed and created by Łukasz Wojtalewicz.
 
-# Setting up
+## Node Version
 
-# Tools Used
+16.13.1
 
-React
+## NPM Version
+
+8.1.4
+
+## Setting up
+
+Simply run npm install and then npm run start in the project root directory.
+
+## Tools Used
+
+### React
+
+### Axios
+
+### Sass
+
+### Final-Form
+
+### react-toastify
+
+### format-string-by-pattern
