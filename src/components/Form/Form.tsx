@@ -125,7 +125,7 @@ const FormComponent = () => {
                             type='number'
                             min='1'
                             max='100'
-                            placeholder='1'
+                            placeholder='1-100'
                             id='no_of_slices'
                             className={
                               meta.error && meta.touched && 'input-error'
@@ -149,7 +149,7 @@ const FormComponent = () => {
                             {...input}
                             type='number'
                             step='0.1'
-                            placeholder='1'
+                            placeholder='1=100'
                             min='1'
                             max='100'
                             id='diameter'
@@ -179,7 +179,7 @@ const FormComponent = () => {
                             type='number'
                             min='1'
                             max='10'
-                            placeholder='1'
+                            placeholder='1-10'
                             id='spiciness_scale'
                             className={
                               meta.error && meta.touched && 'input-error'
@@ -207,9 +207,10 @@ const FormComponent = () => {
                           <input
                             {...input}
                             type='number'
-                            min='0'
+                            min='1'
                             max='100'
                             id='slices_of_bread'
+                            placeholder='1-100'
                             className={
                               meta.error && meta.touched && 'input-error'
                             }
