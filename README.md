@@ -29,3 +29,7 @@ Simply run npm install and then npm run start in the project root directory.
 ### react-toastify
 
 ### format-string-by-pattern
+
+## View Website:
+
+[Form Component - Live](https://form-component-task.vercel.app/)
