@@ -44,7 +44,7 @@ const FormComponent = () => {
   }
 
   return (
-    <div className='form__section'>
+    <section className='form__section'>
       <div className={`form__section-img form__section-img-${bgImage}`}>
         <div className='form__section-container'>
           <Form
@@ -273,7 +273,7 @@ const FormComponent = () => {
           ></Form>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
