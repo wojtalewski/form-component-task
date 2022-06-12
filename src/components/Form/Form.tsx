@@ -12,7 +12,7 @@ import { OnChange } from 'react-final-form-listeners'
 import { FormObject } from '../../interfaces/interfaces'
 import postRecipe from '../../api/postRecipe'
 
-const FormComponent = () => {
+const FormComponent: React.FC = () => {
   const [bgImage, setBgImage] = useState('cutting-board')
 
   const onSubmit = (formObj: FormObject) => {
